@@ -12,9 +12,19 @@ TARGET = Qsang
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        mainwindow.cpp
+SOURCES += main.cpp \
+    src/dialog/mainwindow.cpp \
+    src/dialog/startscene.cpp \
+    src/dialog/button.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += \
+    src/dialog/mainwindow.h \
+    src/dialog/startscene.h \
+    src/dialog/button.h
 
-FORMS    += mainwindow.ui
+FORMS    += \
+    src/dialog/mainwindow.ui
+
+
+
+INCLUDEPATH += src/dialog

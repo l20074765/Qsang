@@ -7,6 +7,11 @@ namespace Ui {
 class MainWindow;
 }
 
+
+class QGraphicsScene;
+class QGraphicsView;
+class StartScene;
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -17,6 +22,8 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    StartScene *startScene;
+    QGraphicsView   *view;
 };
 
 #endif // MAINWINDOW_H
