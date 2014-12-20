@@ -7,6 +7,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setWindowTitle("Qsang");
+
+    this->setCentralWidget(new QLabel("hello!"));
 }
 
 MainWindow::~MainWindow()
