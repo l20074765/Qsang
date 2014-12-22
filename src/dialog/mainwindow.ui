@@ -80,9 +80,17 @@
     <addaction name="actionAbout"/>
     <addaction name="actionAbout_Qt"/>
    </widget>
+   <widget class="QMenu" name="menuDIY">
+    <property name="title">
+     <string>DIY</string>
+    </property>
+    <addaction name="actionCard_editor"/>
+    <addaction name="actionPackage_manager"/>
+   </widget>
    <addaction name="menuGame"/>
    <addaction name="menuView"/>
    <addaction name="menuTools"/>
+   <addaction name="menuDIY"/>
    <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
@@ -249,6 +257,16 @@
   <action name="actionAbout_Qt">
    <property name="text">
     <string>About Qt</string>
+   </property>
+  </action>
+  <action name="actionCard_editor">
+   <property name="text">
+    <string>Card editor ...</string>
+   </property>
+  </action>
+  <action name="actionPackage_manager">
+   <property name="text">
+    <string>Package manager ...</string>
    </property>
   </action>
  </widget>

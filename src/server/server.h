@@ -1,11 +1,12 @@
 #ifndef SERVER_H
 #define SERVER_H
 
-
-class Server : public QDialog
+#include <QDialog>
+class Server : public QObject
 {
+    Q_OBJECT
 public:
-    Server();
+    explicit Server(QObject *parent = 0);
     ~Server();
 };
 

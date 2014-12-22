@@ -1,10 +1,36 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "startscene.h"
-
-
+#include "mywindow.h"
 #include <QGraphicsView>
 #include <QGraphicsItem>
+#include <QLabel>
+#include <QDebug>
+#include <QHBoxLayout>
+
+
+
+static QRectF rectf(-1280/2,-800/2,1280,800);
+
+
+class FitView : public QGraphicsView
+{
+public:
+    FitView(QGraphicsScene *scene):QGraphicsView(scene)
+    {
+        setSceneRect(rectf);
+        setRenderHints(QPainter::TextAntialiasing | QPainter::Antialiasing);
+
+    }
+protected:
+    virtual void resizeEvent(QResizeEvent *event)
+
+    {
+
+        QGraphicsView::resizeEvent(event);
+    }
+};
+
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -12,13 +38,17 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    //scene = NULL;
+
     connect(ui->actionAbout_Qt, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
+    connect(ui->actionAbout,SIGNAL(triggered()),SLOT(actionAbout_triggered()));
+    connect(ui->actionExit,SIGNAL(triggered()),this,SLOT(close()));
+    connect(ui->actionStart_game,SIGNAL(triggered()),this,SLOT(actionStart_Game_triggered()));
+
     QList<QAction*> actions;
     actions << ui->actionStart_game //Start_Server
             << ui->actionJoin_game
             << ui->actionReplay
-            << ui->action_Pause
+            << ui->actionPackage_manager
             << ui->actionConfigure
             << ui->actionGeneral_overview
             << ui->actionCard_overview
@@ -26,18 +56,16 @@ MainWindow::MainWindow(QWidget *parent) :
             << ui->actionAbout
             << ui->actionAbout_Qt;
 
-    //StartScene *startScene  = new StartScene;
-    startScene  = new StartScene;
+    StartScene *startScene  = new StartScene;
     foreach(QAction *action,actions)
     {
         startScene->addButton(action);
     }
 
-    //scene = startScene;
-    view = new QGraphicsView();
-   view->setScene(startScene);
 
-   setCentralWidget(view);
+    scene = startScene;
+    view = new FitView(scene);
+    setCentralWidget(view);
 
 
 
@@ -46,4 +74,29 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+
+
+
+void MainWindow::actionAbout_triggered()
+{
+
+    QString content = "<h3>Hello</h3>";
+    content.append("<center><img src='image/generals/big/bgm_liubei.png'> <br /> </center>") ;
+    content.append("<p><a href='http://www.baidu.com' target='_blank'>http://www.baidu.com</a></p>");
+
+    MyWindow *window = new MyWindow("About Sang",QSize(420, 450));
+   // window->setZValue(9.0);
+    scene->addItem(window);
+    window->setContent(content);
+    window->addCloseButton();
+    window->moveToCenter();
+    window->show();
+}
+
+
+void MainWindow::actionStart_Game_triggered()
+{
+    qDebug()<<"actionStart_Game_triggered";
 }

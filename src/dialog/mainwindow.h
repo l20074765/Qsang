@@ -22,8 +22,11 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    StartScene *startScene;
+    QGraphicsScene *scene;
     QGraphicsView   *view;
+private slots:
+    void actionAbout_triggered();
+    void actionStart_Game_triggered();
 };
 
 #endif // MAINWINDOW_H

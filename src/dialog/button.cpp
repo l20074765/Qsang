@@ -1,8 +1,9 @@
 #include "button.h"
+#include "engine.h"
 #include <QPainter>
 #include <QGraphicsSceneMouseEvent>
 
-
+#include <QDebug>
 
 static QRectF buttonRect(0,0,189,46);
 static QColor ReverseColor(const QColor &color){
@@ -32,9 +33,12 @@ QRectF Button::boundingRect() const
     return QRectF(QPointF(),sizef);
 }
 
-void Button::hoverEnterEvent(QGraphicsSceneMouseEvent *event)
+void Button::hoverEnterEvent(QGraphicsSceneHoverEvent *)
 {
     setFocus(Qt::MouseFocusReason);
+#ifdef AUDIO_SUPPORT
+    Sang->palyAudio("button-hover");//
+#endif
 }
 
 
@@ -45,13 +49,16 @@ void Button::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
 
 
-void Button::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+void Button::mouseReleaseEvent(QGraphicsSceneMouseEvent *)
 {
+#ifdef AUDIO_SUPPORT
+    Sang->palyAudio("button-down");//
+#endif
     emit clicked();
 }
 
 
-void Button::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void Button::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 {
     QRectF rectf = boundingRect();
     QColor textColor,edgeColor,boxColor;

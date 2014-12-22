@@ -3,16 +3,23 @@
 
 #include <QObject>
 
+
+
+
 class Engine : public QObject
 {
     Q_OBJECT
 public:
-    explicit Engine(QObject *parent = 0);
+    explicit Engine();
     ~Engine();
-
+    void palyAudio(const QString &name);
 signals:
 
 public slots:
 };
+
+
+extern Engine *Sang;
+
 
 #endif // ENGINE_H
