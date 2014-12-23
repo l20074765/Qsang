@@ -4,7 +4,7 @@ Server::Server(QObject *parent)
     :QObject(parent)
 {
     server = new QTcpServer(this);
-    //connect(server,SIGNAL(newConnection());
+    connect(server,SIGNAL(newConnection()),this,SLOT(processNewConnection()));
 }
 
 Server::~Server()
@@ -12,3 +12,9 @@ Server::~Server()
 
 }
 
+
+
+void Server::processNewConnection()
+{
+    QTcpSocket *socket = server->nextPendingConnection();
+}
