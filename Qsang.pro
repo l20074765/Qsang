@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -27,7 +27,9 @@ SOURCES += main.cpp \
     src/core/audio.cpp \
     src/core/engine.cpp \
     src/dialog/mywindow.cpp \
-    src/server/server.cpp
+    src/server/server.cpp \
+    src/server/serversocket.cpp \
+    src/server/clientsocket.cpp
 
 HEADERS  += \
     src/dialog/mainwindow.h \
@@ -36,7 +38,9 @@ HEADERS  += \
     src/core/audio.h \
     src/core/engine.h \
     src/dialog/mywindow.h \
-    src/server/server.h
+    src/server/server.h \
+    src/server/serversocket.h \
+    src/server/clientsocket.h
 
 FORMS    += \
     src/dialog/mainwindow.ui
