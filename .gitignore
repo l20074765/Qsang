@@ -1,0 +1,7 @@
+build/
+audio/
+image/
+*Make*
+*.Debug
+*.Release
+*.pro.user
