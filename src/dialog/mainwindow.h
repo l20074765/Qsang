@@ -11,7 +11,7 @@ class MainWindow;
 class QGraphicsScene;
 class QGraphicsView;
 class StartScene;
-
+class ServerDialog;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -24,6 +24,7 @@ private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
     QGraphicsView   *view;
+    ServerDialog *serverDialog;
 private slots:
     void actionAbout_triggered();
     void actionStart_Game_triggered();

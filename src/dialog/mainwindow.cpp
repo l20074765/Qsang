@@ -2,12 +2,15 @@
 #include "ui_mainwindow.h"
 #include "startscene.h"
 #include "mywindow.h"
+#include "serverdialog.h"
+#include "server.h"
+
 #include <QGraphicsView>
 #include <QGraphicsItem>
 #include <QLabel>
 #include <QDebug>
 #include <QHBoxLayout>
-
+#include <QDialog>
 
 
 static QRectF rectf(-1280/2,-800/2,1280,800);
@@ -38,7 +41,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
+    serverDialog = NULL;
     connect(ui->actionAbout_Qt, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
     connect(ui->actionAbout,SIGNAL(triggered()),SLOT(actionAbout_triggered()));
     connect(ui->actionExit,SIGNAL(triggered()),this,SLOT(close()));
@@ -99,4 +102,21 @@ void MainWindow::actionAbout_triggered()
 void MainWindow::actionStart_Game_triggered()
 {
     qDebug()<<"actionStart_Game_triggered";
+    if(serverDialog == NULL)
+        serverDialog = new ServerDialog(this);
+    if(serverDialog == NULL)  return;//fail
+
+    serverDialog->exec();
+    if(serverDialog->result() != QDialog::Accepted)
+        return;
+
+    Server *server = new Server(this);
+
+
+
+    qDebug()<<"actionStart_Game_triggered1";
+
+
+
+
 }

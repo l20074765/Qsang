@@ -3,7 +3,7 @@
 
 #include <QObject>
 
-
+#define TR  tr
 
 
 class Engine : public QObject

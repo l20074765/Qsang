@@ -11,7 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = Qsang
 TEMPLATE = app
 
-CONFIG += audio
+CONFIG += warn_on audio
 
 
 
@@ -29,7 +29,9 @@ SOURCES += main.cpp \
     src/dialog/mywindow.cpp \
     src/server/server.cpp \
     src/server/serversocket.cpp \
-    src/server/clientsocket.cpp
+    src/server/clientsocket.cpp \
+    src/server/roomthread.cpp \
+    src/server/serverdialog.cpp
 
 HEADERS  += \
     src/dialog/mainwindow.h \
@@ -40,7 +42,9 @@ HEADERS  += \
     src/dialog/mywindow.h \
     src/server/server.h \
     src/server/serversocket.h \
-    src/server/clientsocket.h
+    src/server/clientsocket.h \
+    src/server/roomthread.h \
+    src/server/serverdialog.h
 
 FORMS    += \
     src/dialog/mainwindow.ui

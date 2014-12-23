@@ -4,7 +4,7 @@
 #include <QDialog>
 #include <QTcpSocket>
 #include <QTcpServer>
-
+class RoomThread;
 
 class Server : public QObject
 {
@@ -12,8 +12,13 @@ class Server : public QObject
 public:
     explicit Server(QObject *parent = 0);
     ~Server();
+    RoomThread *createNewRoom();
 private:
     QTcpServer *server;
+    RoomThread *currentRoom;
+    QSet<RoomThread *> rooms;
+private slots:
+    void processNewConnection();
 };
 
 #endif // SERVER_H
