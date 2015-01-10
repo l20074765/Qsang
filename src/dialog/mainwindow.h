@@ -3,6 +3,10 @@
 
 #include <QMainWindow>
 
+class ConnectionDialog;
+
+
+
 namespace Ui {
 class MainWindow;
 }
@@ -25,9 +29,12 @@ private:
     QGraphicsScene *scene;
     QGraphicsView   *view;
     ServerDialog *serverDialog;
+    ConnectionDialog   *connection_dialog;
 private slots:
     void actionAbout_triggered();
     void actionStart_Game_triggered();
+    void startGameInAnotherInstance();
+    void actionRestart_game_triggered();
 };
 
 #endif // MAINWINDOW_H

@@ -1,5 +1,8 @@
 #include "server.h"
 #include "roomthread.h"
+#include "engine.h"
+
+#include <QtDebug>
 Server::Server(QObject *parent)
     :QObject(parent)
 {
@@ -19,7 +22,11 @@ Server::~Server()
 
 void Server::processNewConnection()
 {
+
     QTcpSocket *socket = server->nextPendingConnection();
+
+    qDebug()<<"processNewConnection"<<"socket="<<socket;
+
 }
 
 
@@ -31,4 +38,10 @@ RoomThread *Server::createNewRoom()
     rooms.insert(currentRoom);
     return currentRoom;
 
+}
+
+
+bool Server::listen()
+{
+    return server->listen(QHostAddress::Any,IP_PORT);
 }

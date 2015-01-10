@@ -1,6 +1,7 @@
 #include "startscene.h"
 
 #include <QAction>
+#include <QTextEdit>
 StartScene::StartScene()
 {
     setBackgroundBrush(Qt::gray);
@@ -28,3 +29,29 @@ void StartScene::addButton(QAction *action)
 
     buttons<<button;
 }
+
+
+void StartScene::switchToServer(Server *server)
+{
+    foreach(Button *button,buttons)
+        delete button;
+    buttons.clear();
+
+    server_log = new QTextEdit();
+    server_log->setReadOnly(true);
+    server_log->resize(700,400);
+    server_log->move(-400, -180);
+    server_log->setFrameShape(QFrame::NoFrame);
+    server_log->setProperty("type", "border");
+    QPalette palette;
+    palette.setBrush(QPalette::Base, backgroundBrush());
+    server_log->setPalette(palette);
+
+    addWidget(server_log);
+
+    server_log->setText("sadfadfafdafdaf\n");
+    update();
+
+}
+
+

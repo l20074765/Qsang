@@ -13,6 +13,7 @@ public:
     explicit Server(QObject *parent = 0);
     ~Server();
     RoomThread *createNewRoom();
+    bool listen();
 private:
     QTcpServer *server;
     RoomThread *currentRoom;

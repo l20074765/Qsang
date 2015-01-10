@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui network
+QT       += core gui network sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -31,7 +31,11 @@ SOURCES += main.cpp \
     src/server/serversocket.cpp \
     src/server/clientsocket.cpp \
     src/server/roomthread.cpp \
-    src/server/serverdialog.cpp
+    src/server/serverdialog.cpp \
+    src/dialog/connectiondialog.cpp \
+    src/client/client.cpp \
+    src/core/player.cpp \
+    src/client/clientplayer.cpp
 
 HEADERS  += \
     src/dialog/mainwindow.h \
@@ -44,16 +48,23 @@ HEADERS  += \
     src/server/serversocket.h \
     src/server/clientsocket.h \
     src/server/roomthread.h \
-    src/server/serverdialog.h
+    src/server/serverdialog.h \
+    src/dialog/connectiondialog.h \
+    src/client/client.h \
+    src/core/player.h \
+    src/client/clientplayer.h
 
 FORMS    += \
-    src/dialog/mainwindow.ui
+    src/dialog/mainwindow.ui \
+    src/dialog/connectiondialog.ui
 
 
 INCLUDEPATH += include
 INCLUDEPATH += src/dialog
 INCLUDEPATH += src/core
 INCLUDEPATH += src/server
+INCLUDEPATH += src/client
+
 
 LIBS += -L.
 

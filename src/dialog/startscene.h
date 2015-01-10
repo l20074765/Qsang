@@ -3,8 +3,9 @@
 
 #include "QGraphicsScene"
 #include "button.h"
+#include "server.h"
 class QAction;
-
+class QTextEdit;
 
 class StartScene : public QGraphicsScene
 {
@@ -14,9 +15,10 @@ public:
     ~StartScene();
 
     void addButton(QAction *action);
-
+    void switchToServer(Server *server);
 private:
     QList<Button *>buttons;
+    QTextEdit *server_log;
 };
 
 #endif // STARTSCENE_H

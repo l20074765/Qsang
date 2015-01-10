@@ -86,6 +86,7 @@ QLayout *ServerDialog::createButtonLayout()
     QPushButton *pc_button = new QPushButton(TR("PC Console"));
     QPushButton *cancel_button = new QPushButton(TR("Cancel"));
 
+    connect(pc_button, SIGNAL(clicked()), this, SLOT(pcButtonClicked()));
 
     connect(server_button, SIGNAL(clicked()), this, SLOT(serverButtonClicked()));
     connect(cancel_button, SIGNAL(clicked()), this, SLOT(reject()));
@@ -100,9 +101,14 @@ QLayout *ServerDialog::createButtonLayout()
 }
 
 
-
+void ServerDialog::pcButtonClicked()
+{
+    pc_console = true;
+    accept();
+}
 
 void ServerDialog::serverButtonClicked()
 {
+    pc_console = false;
     accept();
 }

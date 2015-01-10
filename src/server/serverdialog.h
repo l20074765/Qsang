@@ -26,6 +26,7 @@ private:
     bool pc_console;
 private slots:
     void serverButtonClicked();
+    void pcButtonClicked();
 };
 
 #endif // SERVERDIALOG_H
